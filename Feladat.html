@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>final_semleges.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="nagy-beadand%C3%B3">Nagy Beadandó</h1>
+<blockquote>
+<p>A feladatokban kért algebrai adatszerkezetekhez hozzá kell rendelni az <code>Eq</code> és <code>Show</code> típusosztályokat, amennyiben a leírás nem kér mást.
+A megfelelő tesztelés érdekében kérlek, az alábbi függvényeket másold be a kódodba:</p>
+</blockquote>
+<pre class="hljs"><code><div><span class="hljs-title">showState</span> a = show a
+<span class="hljs-title">showMage</span> a = show a
+<span class="hljs-title">eqMage</span> a b =  a == b
+<span class="hljs-title">showUnit</span> a = show a
+<span class="hljs-title">showOneVOne</span> a = show a 
+</div></code></pre>
+<h4 id="t%C3%ADpus-magyar%C3%A1z%C3%B3">Típus magyarázó</h4>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-type">Name</span> = <span class="hljs-type">String</span></span>
+<span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-type">Health</span> = <span class="hljs-type">Integer</span></span>
+<span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-type">Spell</span> = (<span class="hljs-type">Integer</span> -&gt; <span class="hljs-type">Integer</span>)</span>
+<span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-type">Army</span> = [<span class="hljs-type">Unit</span>]</span>
+<span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-type">EnemyArmy</span> = <span class="hljs-type">Army</span></span>
+<span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-type">Amount</span> = <span class="hljs-type">Integer</span></span>
+</div></code></pre>
+<hr>
+<h3 id="els%C5%91-feladat">Első feladat</h3>
+<h4 id="a">a)</h4>
+<p>Alkosd meg a <code>State</code> paraméteres algebrai adatszerkezetet. Ez tartalmaz két konstruktort <code>Alive</code> és <code>Dead</code>. Az <code>Alive</code> rendelkezzen a típus paraméterrel, a <code>Dead</code> csak önmagában áll.</p>
+<p>Kiírásnál (<code>Show</code>) ne jelenjen meg az <code>Alive</code> konstruktor.</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">data</span> <span class="hljs-type">State</span> = ...</span>
+</div></code></pre>
+<p>Tesztesetek:</p>
+<pre class="hljs"><code><div><span class="hljs-title">showState</span> (<span class="hljs-type">Alive</span> <span class="hljs-number">5</span>) == <span class="hljs-string">"5"</span>
+<span class="hljs-title">showState</span> (<span class="hljs-type">Alive</span> <span class="hljs-type">True</span>) == <span class="hljs-string">"True"</span>
+<span class="hljs-title">showState</span> <span class="hljs-type">Dead</span> == <span class="hljs-string">"Dead"</span>
+<span class="hljs-title">showState</span> (<span class="hljs-type">Alive</span> 'a') == <span class="hljs-string">"'a'"</span>
+</div></code></pre>
+<hr>
+<h3 id="b">b)</h3>
+<p>Alkosd meg az <code>Entity</code> algebrai adatszerkezetet. Az adatszerkezet a <code>Golem</code> és <code>HaskellElemental</code> egységeket fogja ábrázolni, amiben a <code>Health</code> van egyedül eltárolva.</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">data</span> <span class="hljs-type">Entity</span> = ...</span>
+</div></code></pre>
+<hr>
+<h3 id="c">c)</h3>
+<p>A <code>Mage</code> adatszerkezet tároljon el a <code>Master</code> konstruktorban egy mágust. A mágus rendelkezik névvel (<code>String</code>), életerővel (<code>Health</code>) és egy varázslattal, amit a csatában használ (<code>Spell</code>).</p>
+<p>A <code>Mage</code>-nek kiírásnál (<code>Show</code>) csak a neve látszódik. Két mágust a neve és életereje alapján tudsz megkülönböztetni (<code>Eq</code>).</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">data</span> <span class="hljs-type">Mage</span> = ...</span>
+</div></code></pre>
+<p>Tesztesetek:</p>
+<pre class="hljs"><code><div><span class="hljs-title">showMage</span> papi == <span class="hljs-string">"Papi"</span>
+<span class="hljs-title">showMage</span> java == <span class="hljs-string">"Java"</span>
+<span class="hljs-title">showMage</span> (<span class="hljs-type">Master</span> <span class="hljs-string">"Skver"</span> <span class="hljs-number">4</span> id) == <span class="hljs-string">"Wounded Skver"</span>
+<span class="hljs-title">showMage</span> (<span class="hljs-type">Master</span> <span class="hljs-string">"Papi"</span> <span class="hljs-number">4</span> id) == <span class="hljs-string">"Wounded Papi"</span>
+
+<span class="hljs-title">eqMage</span> papi papi
+<span class="hljs-title">not</span> $ eqMage papi traktor
+<span class="hljs-title">eqMage</span> jani jani
+<span class="hljs-title">not</span> $ eqMage java jani
+</div></code></pre>
+<p>Az alábbi mágusok a további tesztekben megjelennek.</p>
+<pre class="hljs"><code><div><span class="hljs-title">papi</span> = <span class="hljs-keyword">let</span> 
+    tunderpor enemyHP
+        | enemyHP &lt; <span class="hljs-number">8</span> = <span class="hljs-number">0</span>
+        | even enemyHP = div (enemyHP * <span class="hljs-number">3</span>) <span class="hljs-number">4</span>
+        | otherwise = enemyHP - <span class="hljs-number">3</span>
+    <span class="hljs-keyword">in</span> <span class="hljs-type">Master</span> <span class="hljs-string">"Papi"</span> <span class="hljs-number">126</span> tunderpor
+<span class="hljs-title">java</span> = <span class="hljs-type">Master</span> <span class="hljs-string">"Java"</span> <span class="hljs-number">100</span> (\x -&gt;  x - (mod x <span class="hljs-number">9</span>))
+<span class="hljs-title">traktor</span> = <span class="hljs-type">Master</span> <span class="hljs-string">"Traktor"</span> <span class="hljs-number">20</span> (\x -&gt; div (x + <span class="hljs-number">10</span>) ((mod x <span class="hljs-number">4</span>) + <span class="hljs-number">1</span>))
+<span class="hljs-title">jani</span> = <span class="hljs-type">Master</span> <span class="hljs-string">"Jani"</span> <span class="hljs-number">100</span> (\x -&gt; x - div x <span class="hljs-number">4</span>)
+<span class="hljs-title">skver</span> = <span class="hljs-type">Master</span> <span class="hljs-string">"Skver"</span> <span class="hljs-number">100</span> (\x -&gt; div (x+<span class="hljs-number">4</span>) <span class="hljs-number">2</span>)
+<span class="hljs-title">potionMaster</span> = 
+  <span class="hljs-keyword">let</span> plx x
+        | x &gt; <span class="hljs-number">85</span>  = x - plx (div x <span class="hljs-number">2</span>)
+        | x == <span class="hljs-number">60</span> = <span class="hljs-number">31</span>
+        | x &gt;= <span class="hljs-number">51</span> = <span class="hljs-number">1</span> + mod x <span class="hljs-number">30</span>
+        | otherwise = x - <span class="hljs-number">7</span> 
+  <span class="hljs-keyword">in</span> <span class="hljs-type">Master</span> <span class="hljs-string">"PotionMaster"</span> <span class="hljs-number">170</span> plx
+
+</div></code></pre>
+<hr>
+<h4 id="d">d)</h4>
+<p>Alkosd meg a <code>Unit</code> szerkezetet. Ez egy <code>M</code> vagy <code>E</code> konstruktorral tárol el egy <code>State</code>-be csomagolt <code>Mage</code>-et vagy <code>Entity</code>-t.</p>
+<p>Kiíráskor (<code>Show</code>) a konstruktor ne jelenjen meg.</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">data</span> <span class="hljs-type">Unit</span> = ...</span>
+</div></code></pre>
+<p>Tesztesetek:</p>
+<pre class="hljs"><code><div><span class="hljs-title">showUnit</span> (<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> papi)) == showMage papi
+<span class="hljs-title">showUnit</span> (<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>))) == show (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>)
+<span class="hljs-title">showUnit</span> (<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>))) == show (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>)
+<span class="hljs-title">showUnit</span> (<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>) == <span class="hljs-string">"Dead"</span>
+<span class="hljs-title">showUnit</span> (<span class="hljs-type">M</span> <span class="hljs-type">Dead</span>) == <span class="hljs-string">"Dead"</span>
+</div></code></pre>
+<hr>
+<h3 id="m%C3%A1sodik-feladat">Második Feladat</h3>
+<p>A <code>formationFix</code> függvény segítségével egy sereg elesett tagjait rendezd a lista hátuljába.</p>
+<pre class="hljs"><code><div><span class="hljs-title">formationFix</span> :: <span class="hljs-type">Army</span> -&gt; <span class="hljs-type">Army</span>
+</div></code></pre>
+<p>Tesztesetek:</p>
+<pre class="hljs"><code><div><span class="hljs-title">formationFix</span> [<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">E</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">4</span>)), <span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Master</span> <span class="hljs-string">"Papi"</span> <span class="hljs-number">126</span> (\x -&gt; x - <span class="hljs-number">1</span>)))] == [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">4</span>)), <span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Master</span> <span class="hljs-string">"Papi"</span> <span class="hljs-number">126</span> (\x -&gt; x - <span class="hljs-number">1</span>))), <span class="hljs-type">E</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">E</span> <span class="hljs-type">Dead</span>]
+<span class="hljs-title">formationFix</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">4</span>)), <span class="hljs-type">E</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Master</span> <span class="hljs-string">"Papi"</span> <span class="hljs-number">126</span> (\x -&gt; x - <span class="hljs-number">1</span>))), <span class="hljs-type">M</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">10</span>)), <span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">10</span>)), <span class="hljs-type">M</span> <span class="hljs-type">Dead</span>] == [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">4</span>)), <span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Master</span> <span class="hljs-string">"Papi"</span> <span class="hljs-number">126</span> (\x -&gt; x - <span class="hljs-number">1</span>))), <span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">10</span>)), <span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">10</span>)), <span class="hljs-type">E</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">M</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">M</span> <span class="hljs-type">Dead</span>]
+<span class="hljs-title">formationFix</span> [<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Master</span> <span class="hljs-string">"Java"</span> <span class="hljs-number">100</span> (\x -&gt;  x - (mod x <span class="hljs-number">9</span>)))), <span class="hljs-type">M</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">E</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Master</span> <span class="hljs-string">"Papi"</span> <span class="hljs-number">126</span> (\x -&gt; x - <span class="hljs-number">1</span>))), <span class="hljs-type">M</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">10</span>)), <span class="hljs-type">E</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">E</span> <span class="hljs-type">Dead</span>] == [<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Master</span> <span class="hljs-string">"Java"</span> <span class="hljs-number">100</span> (\x -&gt;  x - (mod x <span class="hljs-number">9</span>)))), <span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Master</span> <span class="hljs-string">"Papi"</span> <span class="hljs-number">126</span> (\x -&gt; x - <span class="hljs-number">1</span>))), <span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">10</span>)), <span class="hljs-type">M</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">E</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">M</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">E</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">E</span> <span class="hljs-type">Dead</span>]
+</div></code></pre>
+<hr>
+<h3 id="harmadik-feladat">Harmadik feladat</h3>
+<p>Az <code>over</code> függvény segítségével vizsgáld meg, hogy egy <code>Army</code> minden tagja elesett-e.</p>
+<pre class="hljs"><code><div><span class="hljs-title">over</span> :: <span class="hljs-type">Army</span> -&gt; <span class="hljs-type">Bool</span>
+</div></code></pre>
+<p>Tesztesetek:</p>
+<pre class="hljs"><code><div><span class="hljs-title">over</span> []
+<span class="hljs-title">over</span> [<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>]
+<span class="hljs-title">not</span> $ over [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">10</span>)),<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>]
+<span class="hljs-title">not</span> $ over [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">10</span>)),<span class="hljs-type">M</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">1</span>))]
+<span class="hljs-title">not</span> $ over [<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">M</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">1</span>))]
+<span class="hljs-title">over</span> [<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>]
+</div></code></pre>
+<hr>
+<h3 id="negyedik-feladat">Negyedik feladat</h3>
+<p>A <code>fight</code> függvény segítségével megkapod az első paraméterben kapott sereg támadása után a második paraméterben megtámadott sereg állapotát.</p>
+<ul>
+<li><code>Golem</code> a vele azonos pozícióban lévő ellenségbe sebez 1 pontot</li>
+<li><code>HaskellElemental</code> a vele azonos pozícióban lévő ellenségbe sebez 3 pontot</li>
+<li><code>Mage</code> a vele azonos és hátrébb lévő ellenségre használja a képességét</li>
+</ul>
+<p>Ha egy egység életereje 1 alá csökken, elesik.</p>
+<pre class="hljs"><code><div><span class="hljs-title">fight</span> :: <span class="hljs-type">EnemyArmy</span> -&gt; <span class="hljs-type">Army</span> -&gt; <span class="hljs-type">Army</span>
+</div></code></pre>
+<p>Tesztesetek:</p>
+<pre class="hljs"><code><div><span class="hljs-title">fight</span> [] [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">70</span>,<span class="hljs-number">70</span>]] == [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">70</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">70</span>))]
+<span class="hljs-title">fight</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> n))| n &lt;- [<span class="hljs-number">50</span>,<span class="hljs-number">50</span>]] [] == []
+<span class="hljs-title">fight</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> n))| n &lt;- [<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>]] [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">70</span>,<span class="hljs-number">70</span>,<span class="hljs-number">70</span>,<span class="hljs-number">70</span>,<span class="hljs-number">70</span>]] ==[<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">67</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">67</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">67</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">67</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">70</span>))]
+<span class="hljs-title">fight</span> [<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> potionMaster)] [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">70</span>,<span class="hljs-number">70</span>,<span class="hljs-number">70</span>,<span class="hljs-number">70</span>,<span class="hljs-number">70</span>]] == [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">11</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">11</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">11</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">11</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">11</span>))]
+<span class="hljs-title">fight</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">50</span>)), <span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> potionMaster)] [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">70</span>,<span class="hljs-number">70</span>,<span class="hljs-number">70</span>,<span class="hljs-number">70</span>,<span class="hljs-number">70</span>]] == [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">67</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">11</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">11</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">11</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">11</span>))]
+<span class="hljs-title">fight</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">50</span>)), <span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> potionMaster), <span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">50</span>))] [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">70</span>,<span class="hljs-number">70</span>,<span class="hljs-number">70</span>,<span class="hljs-number">70</span>,<span class="hljs-number">70</span>]] == [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">67</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">11</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">8</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">11</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">11</span>))]
+</div></code></pre>
+<hr>
+<h3 id="%C3%B6t%C3%B6dik-feladat">Ötödik feladat</h3>
+<p>A <code>haskellBlast</code> függvény megkeresi, hogy egy 5 hosszú területen hol tudja a legnagyobb sebzést okozni úgy, hogy azon a területen minden egységbe 5-öt sebez. Miután megtalálta, sebzi is az egységeket azon a területen. Amennyiben egy egység életereje 1 alá csökken, az elseik.</p>
+<pre class="hljs"><code><div><span class="hljs-title">haskellBlast</span> :: <span class="hljs-type">Army</span> -&gt; <span class="hljs-type">Army</span>
+</div></code></pre>
+<p>Tesztesetek:</p>
+<pre class="hljs"><code><div><span class="hljs-title">haskellBlast</span> [] == []
+<span class="hljs-title">haskellBlast</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">10</span>))] == [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>))]
+<span class="hljs-title">haskellBlast</span> [<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> traktor)] == [<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Master</span> <span class="hljs-string">"Traktor"</span> <span class="hljs-number">15</span> (\x -&gt; div (x + <span class="hljs-number">10</span>) ((mod x <span class="hljs-number">4</span>) + <span class="hljs-number">1</span>))))]
+<span class="hljs-title">haskellBlast</span> ([<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> traktor)] ++ [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>]]) == [<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Master</span> <span class="hljs-string">"Traktor"</span> <span class="hljs-number">15</span> (\x -&gt; div (x + <span class="hljs-number">10</span>) ((mod x <span class="hljs-number">4</span>) + <span class="hljs-number">1</span>)))),<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>]
+<span class="hljs-title">haskellBlast</span> ([<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>]]) == [<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>]
+<span class="hljs-title">haskellBlast</span> ([<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>]] ++ [<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> papi)]) == [<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> papi)]
+<span class="hljs-title">haskellBlast</span> ([<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>]]) == [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">10</span>))]
+<span class="hljs-title">haskellBlast</span> ([<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">4</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>]]) == [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">4</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>))]
+</div></code></pre>
+<hr>
+<h3 id="hatodik-feladat">Hatodik feladat</h3>
+<p>A <code>multiHeal</code> függvény vesz egy megadott mennyiségű életerőt, majd azt egyenletesen balról jobbra szétosztja az egységek között. Ha nem lehet mindenkinek ugyanannyit osztani, akkor a maradékot balról jobbra haladva osztja el, amíg tudja. Elesett egységeket nem tudsz gyógyítani.</p>
+<pre class="hljs"><code><div><span class="hljs-title">multiHeal</span> :: <span class="hljs-type">Health</span> -&gt; <span class="hljs-type">Army</span> -&gt; <span class="hljs-type">Army</span>
+</div></code></pre>
+<p>Tesztesetek:</p>
+<pre class="hljs"><code><div><span class="hljs-title">multiHeal</span> <span class="hljs-number">5</span> [] == []
+<span class="hljs-title">multiHeal</span> <span class="hljs-number">5</span> [<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>] == [<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>]
+<span class="hljs-title">multiHeal</span> <span class="hljs-number">5</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>))] == [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">10</span>))] 
+<span class="hljs-title">multiHeal</span> <span class="hljs-number">5</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">1</span>)), <span class="hljs-type">M</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">1</span>))] == [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">4</span>)),<span class="hljs-type">M</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">3</span>))]
+<span class="hljs-title">multiHeal</span> <span class="hljs-number">5</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>]] == [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">3</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">2</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">2</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">2</span>))]
+<span class="hljs-title">multiHeal</span> <span class="hljs-number">5</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>]] == [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">2</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">2</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">2</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">2</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">2</span>))]
+<span class="hljs-title">multiHeal</span> <span class="hljs-number">5</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>]] == [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">2</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">2</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">2</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">2</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">2</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">1</span>))]
+</div></code></pre>
+<hr>
+<h4 id="eddig-voltak-k%C3%B6telez%C5%91ek-a-feladatok-ezen-a-ponton-t%C3%BAl-lehet-pontokat-szerezni-legfeljebb-5-pont-szerezhet%C5%91-pontokb%C3%B3l-t%C3%B6bb-van-%C3%ADgy-lehet-v%C3%A1logatni">Eddig voltak kötelezőek a feladatok, ezen a ponton túl lehet pontokat szerezni, <strong>LEGFELJEBB 5 pont</strong> szerezhető (pontokból több van, így lehet válogatni).</h4>
+<h3 id="hetedik-feladat-2-pont">Hetedik feladat (2 Pont)</h3>
+<p>A <code>battle</code> függvénnyel szimulálj le egy csatát, majd add vissza a győztes csapat állapotát <code>Just</code>-ba csomagolva. Ha nincs győztes, adj vissza <code>Nothing</code>-ot.</p>
+<p>Csata menete:</p>
+<ul>
+<li>a két csapat megütközik</li>
+<li>a egy <code>haskellBlast</code> becsapódik a seregedbe</li>
+<li>egyenletesen gyógyítalsz 20 pontot a seregedben</li>
+<li>mindkét sereg rendezi sorait és a halottakat kivonja a csata közepéről</li>
+</ul>
+<p>Ez addig ismétlődik, amíg egy csapat összes tagja el nem esik.</p>
+<pre class="hljs"><code><div><span class="hljs-title">battle</span> :: <span class="hljs-type">Army</span> -&gt; <span class="hljs-type">EnemyArmy</span> -&gt; <span class="hljs-type">Maybe</span> <span class="hljs-type">Army</span> <span class="hljs-comment">{- vagy EnemyArmy lesz az eredmény. -}</span>
+</div></code></pre>
+<p>Tesztesetek:</p>
+<pre class="hljs"><code><div><span class="hljs-title">battle</span> [] [] == <span class="hljs-type">Nothing</span>
+<span class="hljs-title">battle</span> [] [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>))] == <span class="hljs-type">Just</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>))]
+<span class="hljs-title">battle</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>))] [] == <span class="hljs-type">Just</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>))]
+<span class="hljs-title">battle</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>]] [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>))] == <span class="hljs-type">Just</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">4</span>))]
+<span class="hljs-title">battle</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">30</span>,<span class="hljs-number">30</span>]] [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>))] == <span class="hljs-type">Just</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">40</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">55</span>))]
+<span class="hljs-title">battle</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">30</span>,<span class="hljs-number">30</span>]] [<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> potionMaster), <span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>))] == <span class="hljs-type">Just</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">52</span>)),<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>]
+<span class="hljs-title">battle</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">30</span>,<span class="hljs-number">30</span>]] ([<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> potionMaster)] ++ [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">10</span>)) | n &lt;- [<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>]]) == <span class="hljs-type">Just</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">352</span>)),<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>] 
+<span class="hljs-title">battle</span> [<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> papi)]  [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">10</span>)) | n &lt;- [<span class="hljs-number">100.</span><span class="hljs-number">.200</span>]] == <span class="hljs-type">Just</span> [<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Master</span> <span class="hljs-string">"Papi"</span> <span class="hljs-number">150</span> id))]
+<span class="hljs-title">battle</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>]] [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">10</span>)) | n &lt;- [<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>]] == <span class="hljs-type">Just</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>)),<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>]
+<span class="hljs-title">battle</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">20</span>)), <span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> traktor)]  [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">10</span>)) | n &lt;- [<span class="hljs-number">100.</span><span class="hljs-number">.200</span>]] == <span class="hljs-type">Just</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">1840</span>)),<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Master</span> <span class="hljs-string">"Traktor"</span> <span class="hljs-number">1867</span> id))]
+</div></code></pre>
+<hr>
+<h3 id="nyolcadik-feladat-2-pont">Nyolcadik feladat (2 Pont)</h3>
+<p>A <code>chain</code> függvény végig megy felváltva a két sereg egységein. Egy megadott mennyiséggel gyógyítja a te embereid és sebzi az ellenségeset. Minden ugrással ez az érték egygyel csökken, amíg el nem éri a nullát vagy nem tud tovább ugrani.</p>
+<pre class="hljs"><code><div><span class="hljs-title">chain</span> :: <span class="hljs-type">Amount</span> -&gt; (<span class="hljs-type">Army</span>, <span class="hljs-type">EnemyArmy</span>) -&gt; (<span class="hljs-type">Army</span>, <span class="hljs-type">EnemyArmy</span>)
+</div></code></pre>
+<p>Tesztesetek:</p>
+<pre class="hljs"><code><div><span class="hljs-title">chain</span> <span class="hljs-number">5</span> ([],[]) == ([],[])
+<span class="hljs-title">chain</span> <span class="hljs-number">5</span> ([<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>))], [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>))]) == ([<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">10</span>))],[<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">1</span>))])
+<span class="hljs-title">chain</span> <span class="hljs-number">5</span> ([<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>]], [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> n)) | n &lt;- [<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>]]) == ([<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">10</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">8</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">6</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>))],[<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">6</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">8</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">10</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">10</span>))])
+<span class="hljs-title">chain</span> <span class="hljs-number">5</span> ([<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">5</span>,<span class="hljs-number">5</span>]], [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> n)) | n &lt;- [<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>]]) == ([<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">10</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">8</span>))],[<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">6</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">8</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">10</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">10</span>))])
+<span class="hljs-title">chain</span> <span class="hljs-number">5</span> ([<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>]], [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> n)) | n &lt;- [<span class="hljs-number">10</span>]]) == ([<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">10</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">8</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>))],[<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">6</span>))])
+<span class="hljs-title">chain</span> <span class="hljs-number">5</span> ([<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>, <span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>)), <span class="hljs-type">E</span> <span class="hljs-type">Dead</span>], [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> n)) | n &lt;- [<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>]]) == ([<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">9</span>)),<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>],[<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">7</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">8</span>))])
+<span class="hljs-title">chain</span> <span class="hljs-number">5</span> ([<span class="hljs-type">E</span> <span class="hljs-type">Dead</span> | _ &lt;- [<span class="hljs-number">1.</span><span class="hljs-number">.5</span>]], [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> n)) | n &lt;- [<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>]]) == ([<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>,<span class="hljs-type">E</span> <span class="hljs-type">Dead</span>],[<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">6</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">7</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">8</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">9</span>))])
+</div></code></pre>
+<hr>
+<h3 id="kilencedik-feladat-1-pont">Kilencedik feladat (1 Pont)</h3>
+<p>A <code>battleWithChain</code> függvény szimulálja le a két sereg párharcát a következő módon:</p>
+<ul>
+<li>a két csapat megütközik</li>
+<li>a egy <code>haskellBlast</code> becsapódik a seregedbe</li>
+<li>egyenletesen gyógyítalsz 20 pontot a seregedben</li>
+<li>alkalmazod a <code>chain</code> függvényt a két seregen 5 ös értékkel</li>
+<li>mindkét sereg rendezi sorait és a halottakat kivonja a csata közepéről</li>
+</ul>
+<p>Ez addig ismétlődik, amíg egy csapat összes tagja el nem esik.</p>
+<pre class="hljs"><code><div><span class="hljs-title">battleWithChain</span> :: <span class="hljs-type">Army</span> -&gt; <span class="hljs-type">EnemyArmy</span> -&gt; <span class="hljs-type">Maybe</span> <span class="hljs-type">Army</span> <span class="hljs-comment">{- vagy Maybe EnemyArmy -}</span>
+</div></code></pre>
+<p>Tesztesetek:</p>
+<pre class="hljs"><code><div><span class="hljs-title">battleWithChain</span> [] [] == <span class="hljs-type">Nothing</span>
+<span class="hljs-title">battleWithChain</span> [] [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>))] == <span class="hljs-type">Just</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>))]
+<span class="hljs-title">battleWithChain</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>))] [] == <span class="hljs-type">Just</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">5</span>))]
+<span class="hljs-title">battleWithChain</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>]] [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>))] == <span class="hljs-type">Nothing</span>
+<span class="hljs-title">battleWithChain</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">30</span>,<span class="hljs-number">30</span>]] [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>))] == <span class="hljs-type">Just</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">37</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">38</span>))]
+<span class="hljs-title">battleWithChain</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">30</span>,<span class="hljs-number">30</span>]] [<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> potionMaster), <span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">5</span>))] == <span class="hljs-type">Just</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">44</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">36</span>))]
+<span class="hljs-title">battleWithChain</span> [<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> papi)]  [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">10</span>)) | n &lt;- [<span class="hljs-number">100.</span><span class="hljs-number">.200</span>]] == <span class="hljs-type">Just</span> [<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Master</span> <span class="hljs-string">"Papi"</span> <span class="hljs-number">160</span> id ))]
+<span class="hljs-title">battleWithChain</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> n)) | n &lt;- [<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>]] [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">10</span>)) | n &lt;- [<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>,<span class="hljs-number">50</span>]] == <span class="hljs-type">Just</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">68</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">53</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">39</span>)),<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">33</span>))]
+<span class="hljs-title">battleWithChain</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">20</span>)), <span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> java)]  [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">HaskellElemental</span> <span class="hljs-number">10</span>)) | n &lt;- [<span class="hljs-number">100.</span><span class="hljs-number">.200</span>]] == <span class="hljs-type">Just</span> [<span class="hljs-type">E</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Golem</span> <span class="hljs-number">734</span>)),<span class="hljs-type">M</span> (<span class="hljs-type">Alive</span> (<span class="hljs-type">Master</span> <span class="hljs-string">"Java"</span> <span class="hljs-number">616</span> id))]
+</div></code></pre>
+<hr>
+<h3 id="tizedik-feladat-1-pont">Tizedik feladat (1 Pont)</h3>
+<p>Az alábbi rekurzív algebrai adatszerkezet egy párbajt ábrázol.</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">data</span> <span class="hljs-type">OneVOne</span> = <span class="hljs-type">Winner</span> <span class="hljs-type">String</span> | <span class="hljs-type">You</span> <span class="hljs-type">Health</span> <span class="hljs-type">OneVOne</span> | <span class="hljs-type">HaskellMage</span> <span class="hljs-type">Health</span> <span class="hljs-type">OneVOne</span> <span class="hljs-keyword">deriving</span> <span class="hljs-type">Eq</span></span>
+</div></code></pre>
+<p>A konstruktorok jelölik, hogy éppen kinek a köre jön és mennyi életerővel rendelkezik. A rekurzív szerkezet egy <code>Winner</code> konstruktottal fejeződik be, ami a párbaj győztesét tartalmazza.</p>
+<p>Alkosd meg hozzá a <code>Show</code> <code>instance</code>-t a következő feltételekkel:</p>
+<ul>
+<li>A párbaj <code>&lt;&gt;</code> jelek között jelenjen meg</li>
+<li>A párnaj részei <code>;</code>-vel legyenek elválasztva</li>
+<li>A párbaj győztese <code>||</code> jelek között jelenjen meg</li>
+</ul>
+<p>Tesztesetek:</p>
+<pre class="hljs"><code><div><span class="hljs-title">showOneVOne</span> (<span class="hljs-type">Winner</span> <span class="hljs-string">""</span>) == <span class="hljs-string">"&lt;|| Winner  ||&gt;"</span>
+<span class="hljs-title">showOneVOne</span> (<span class="hljs-type">You</span> <span class="hljs-number">5</span> (<span class="hljs-type">Winner</span> <span class="hljs-string">""</span>)) == <span class="hljs-string">"&lt;You 5; || Winner  ||&gt;"</span>
+<span class="hljs-title">showOneVOne</span> (<span class="hljs-type">HaskellMage</span> <span class="hljs-number">10</span> (<span class="hljs-type">You</span> <span class="hljs-number">5</span> (<span class="hljs-type">Winner</span> <span class="hljs-string">"a"</span>))) == <span class="hljs-string">"&lt;HaskellMage 10; You 5; || Winner a ||&gt;"</span>
+<span class="hljs-title">showOneVOne</span> (<span class="hljs-type">You</span> <span class="hljs-number">10</span> (<span class="hljs-type">You</span> <span class="hljs-number">5</span> (<span class="hljs-type">Winner</span> <span class="hljs-string">"a"</span>))) == <span class="hljs-string">"&lt;You 10; You 5; || Winner a ||&gt;"</span>
+</div></code></pre>
+<hr>
+<h3 id="tizenegyedik-feladat-2-pont">Tizenegyedik feladat (2 Pont)</h3>
+<p>Alkosd meg a <code>finalBattle</code> függvényt, ami egy párharcot fog generálni. A párharcban az felek felváltva következnek és az alábbi stratégiákat alkalmazzák:</p>
+<p>Haskell mágus:</p>
+<ul>
+<li>Ha az életereje kevesebb, mint 4, megfelezi ellenfele életerejét és a sajátját a négyszeresére növeli</li>
+<li>Ha az ellenfele életereje 20 nál több, akkor az ellenfele életének háromszorosának negyedére csökkenti</li>
+<li>Különben tizenegyet sebez ellenfelébe</li>
+</ul>
+<p>Te:</p>
+<ul>
+<li>Ha a te életerőd négynél kevesebb, a négyszeresére növeled azt</li>
+<li>Ha ellenfeled életereje tizenötnél nagyobb, akkor azt a háromszorosának ötödére csökkented</li>
+<li>Kölönben kilencet sebzel bele</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-title">finalBattle</span> :: <span class="hljs-type">Health</span> -&gt; <span class="hljs-type">Health</span> -&gt; <span class="hljs-type">OneVOne</span>
+</div></code></pre>
+<p>Teszteset:</p>
+<pre class="hljs"><code><div><span class="hljs-title">show</span> (finalBattle <span class="hljs-number">500</span> <span class="hljs-number">500</span>) == <span class="hljs-string">"&lt;HaskellMage 500; You 375; HaskellMage 300; You 281; HaskellMage 180; You 210; HaskellMage 108; You 157; HaskellMage 64; You 117; HaskellMage 38; You 87; HaskellMage 22; You 65; HaskellMage 13; You 48; HaskellMage 4; You 36; HaskellMage 0; || Winner You ||&gt;"</span>
+</div></code></pre>
+
+</body>
+</html>
